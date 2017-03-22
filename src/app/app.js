@@ -10,6 +10,7 @@ import angularMessages from 'angular-messages';
 
 import storeModule from './store/store.module';
 import gameModule from './game/game.module';
+import serviceModule from './service/service.module';
 
 import app from './directive/app.directive';
 
@@ -17,8 +18,9 @@ import app from './directive/app.directive';
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [angularAnimate, angularAria, angularMaterial, angularUiRouter, angularMessages,
-    storeModule, gameModule
+    storeModule, gameModule, serviceModule
   ])
-  .directive('app', app);
+  .directive('app', app)
+  .constant('$apiUrl', API_URL);
 
 export default MODULE_NAME;

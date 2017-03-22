@@ -63,11 +63,9 @@ module.exports = function makeWebpackConfig() {
    */
   if (isTest) {
     config.devtool = 'inline-source-map';
-  }
-  else if (isProd) {
+  } else if (isProd) {
     config.devtool = 'source-map';
-  }
-  else {
+  } else {
     config.devtool = 'eval-source-map';
   }
 
@@ -104,9 +102,15 @@ module.exports = function makeWebpackConfig() {
 
       loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
         fallbackLoader: 'style-loader',
-        loader: [
-          {loader: 'css-loader', query: {sourceMap: true}},
-          {loader: 'postcss-loader'}
+        loader: [{
+            loader: 'css-loader',
+            query: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader'
+          }
         ],
       })
     }, {
@@ -151,8 +155,8 @@ module.exports = function makeWebpackConfig() {
    * Reference: https://github.com/postcss/autoprefixer-core
    * Add vendor prefixes to your css
    */
-   // NOTE: This is now handled in the `postcss.config.js`
-   //       webpack2 has some issues, making the config file necessary
+  // NOTE: This is now handled in the `postcss.config.js`
+  //       webpack2 has some issues, making the config file necessary
 
   /**
    * Plugins
@@ -183,7 +187,11 @@ module.exports = function makeWebpackConfig() {
       // Reference: https://github.com/webpack/extract-text-webpack-plugin
       // Extract css files
       // Disabled when in test mode or not in build mode
-      new ExtractTextPlugin({filename: 'css/[name].css', disable: !isProd, allChunks: true})
+      new ExtractTextPlugin({
+        filename: 'css/[name].css',
+        disable: !isProd,
+        allChunks: true
+      })
     )
   }
 
@@ -209,6 +217,12 @@ module.exports = function makeWebpackConfig() {
       }])
     )
   }
+
+  //TODO: change to use envConfig in the future.
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      API_URL: JSON.stringify('http://localhost:9090/')
+    }));
 
   /**
    * Dev server configuration
