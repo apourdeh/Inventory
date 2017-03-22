@@ -3,16 +3,19 @@
     <table md-table md-row-select multiple ng-model="selected" md-progress="ListCtrl.promise">
       <thead md-head md-order="ListCtrl.query.order">
         <tr md-row>
-          <th md-column md-order-by="id"><span>Id</span></th>
-          <th md-column md-order-by="address" hide-xs show-gt-xs><span>Address</span></th>
-          <th md-column></th>
+          <th md-column md-order-by="storeNumber"><span>Store Number</span></th>
+          <th md-column><span>Address</span></th>
+          <th md-column>Hours of Operation</th>
+          <th md-column>Managed By</th>
+          <th md-column>View Store</th>
         </tr>
       </thead>
       <tbody md-body>
         <tr md-row ng-repeat="store in ListCtrl.stores.data">
-          <td md-cell>{{store.id}}</td>
+          <td md-cell>{{store.storeNumber}}</td>
           <td md-cell>{{store.address}}</td>
-          <td md-cell>{{user.roles}}</td>
+          <td md-cell>{{store.hoursOfOperation}}</td>
+          <td md-cell>{{store.managedBy}}</td>
           <td md-cell>
             <md-button class=" md-icon-button " ng-click="ListCtrl.viewStore(store) ">
               <md-icon>edit</md-icon>
@@ -23,4 +26,6 @@
     </table>
   </md-table-container>
   <md-table-pagination md-limit="listCtrl.query.limit " md-limit-options="listCtrl.limitOptions " md-page="listCtrl.query.page " md-total="{{listCtrl.stores.count}} " md-page-select></md-table-pagination>
+</md-card>
+select></md-table-pagination>
 </md-card>

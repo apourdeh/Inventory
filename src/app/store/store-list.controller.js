@@ -3,15 +3,7 @@ StoreListController.$inject = ['$state', 'storeService'];
 export default function StoreListController($state, storeService) {
   var self = this;
   self.stores = {};
-  self.stores.data = [{
-      id: 1,
-      address: '123 S. Whatever'
-    },
-    {
-      id: 2,
-      address: '456 N. Hello'
-    }
-  ];
+  self.stores.data = [];
   self.viewStore = viewStore;
   self.getStores = getStores;
 
@@ -24,7 +16,7 @@ export default function StoreListController($state, storeService) {
 
   function viewStore(store) {
     $state.go('store', {
-      storeId: store.id
+      storeId: store.storeNumber
     });
   }
 

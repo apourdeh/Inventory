@@ -1,8 +1,8 @@
 <?php
-$servername = "12.34.56.78";
+$servername = 'cse412instance.cir6ydjnoolb.us-west-2.rds.amazonaws.com';
 $username = "cse_412";
-$password = "cse412";
-$dbName = "cse412_phase3";
+$password = "mypassword";
+$dbName = "cse412";
 
-$conn = new mysqli($servername, $username, $password,$dbName);
+$conn = new mysqli($servername, $username, $password, $dbName);
 ?>
