@@ -1,3 +1,5 @@
+import 'angular-material-data-table/dist/md-data-table.css';
+
 import storeRoute from './store.route';
 
 import StoreListController from './store-list.controller';

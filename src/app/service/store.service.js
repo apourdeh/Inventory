@@ -16,7 +16,7 @@ export default function storeService($http, $apiUrl) {
       return response.data;
     }
 
-    function getSoresFailed(response) {
+    function getStoresFailed(response) {
       console.error("Failed to get stores")
     }
   }

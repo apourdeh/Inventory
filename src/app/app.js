@@ -7,6 +7,7 @@ import angularAria from 'angular-aria';
 import angularMaterial from 'angular-material';
 import angularUiRouter from 'angular-ui-router';
 import angularMessages from 'angular-messages';
+import mdDataTable from 'angular-material-data-table';
 
 import storeModule from './store/store.module';
 import gameModule from './game/game.module';
@@ -18,7 +19,7 @@ import app from './directive/app.directive';
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [angularAnimate, angularAria, angularMaterial, angularUiRouter, angularMessages,
-    storeModule, gameModule, serviceModule
+    mdDataTable, storeModule, gameModule, serviceModule
   ])
   .directive('app', app)
   .constant('$apiUrl', API_URL);
