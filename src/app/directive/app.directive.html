@@ -1,0 +1,14 @@
+<md-toolbar class="md-whiteframe-5dp">
+  <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+    <div hide-xs hide-sm show-gt-sm style="color: white">Game Store System</div>
+  </div>
+</md-toolbar>
+
+<div>
+  <md-nav-bar md-selected-nav-item="selectedNavItem" nav-bar-aria-label="navigation links">
+    <md-nav-item md-nav-href="#/store/list" name="store-list">Store List</md-nav-item>
+    <md-nav-item md-nav-href="#/game/list" name="game-list">Game List</md-nav-item>
+
+  </md-nav-bar>
+  <ui-view></ui-view>
+</div>
