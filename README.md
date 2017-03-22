@@ -1,38 +1,29 @@
-# angular-webpack
+# CSE 412 project
 
-[![Dependency Status](https://david-dm.org/preboot/angular-webpack/status.svg)](https://david-dm.org/preboot/angular-webpack#info=dependencies) [![devDependency Status](https://david-dm.org/preboot/angular-webpack/dev-status.svg)](https://david-dm.org/preboot/angular-webpack#info=devDependencies)
+This project uses the angular-webpack preboot project found [Here](https://github.com/preboot/angular-webpack).
 
-A complete, yet simple, starter for Angular using Webpack.
+### Install Node
+#### For Mac:
 
-This workflow serves as a starting point for building Angular 1.x applications using Webpack 2.x. Should be noted that apart from the pre-installed angular package, this workflow is pretty much generic.
-
-* Heavily commented webpack configuration with reasonable defaults.
-* ES6, and ES7 support with babel.
-* Source maps included in all builds.
-* Development server with live reload.
-* Production builds with cache busting.
-* Testing environment using karma to run tests and jasmine as the framework.
-* Code coverage when tests are run.
-* No gulp and no grunt, just npm scripts.
-
->Warning: Make sure you're using the latest version of Node.js and NPM
+Make sure you have [homebrew](http://brew.sh/) installed.
+```bash
+$ brew install node
+```
 
 ### Quick start
 
 > Clone/Download the repo then edit `app.js` inside [`/src/app/app.js`](/src/app/app.js)
 
 ```bash
-# clone our repo
-$ git clone https://github.com/preboot/angular-webpack.git my-app
-
-# change directory to your app
-$ cd my-app
-
 # install the dependencies with npm
 $ npm install
 
 # start the server
 $ npm start
+
+# in a different terminal window, start the php server
+$ cd src/public/php
+$ php -S localhost:9090
 ```
 
 go to [http://localhost:8080](http://localhost:8080) in your browser.
