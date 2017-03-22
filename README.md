@@ -12,8 +12,6 @@ $ brew install node
 
 ### Quick start
 
-> Clone/Download the repo then edit `app.js` inside [`/src/app/app.js`](/src/app/app.js)
-
 ```bash
 # install the dependencies with npm
 $ npm install
