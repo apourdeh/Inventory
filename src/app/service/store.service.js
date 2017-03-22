@@ -8,7 +8,7 @@ export default function storeService($http, $apiUrl) {
   };
 
   function getStores() {
-    return $http.get($apiUrl + "/stores")
+    return $http.get($apiUrl + "stores")
       .then(getStoresComplete)
       .catch(getStoresFailed);
 

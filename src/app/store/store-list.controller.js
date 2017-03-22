@@ -31,11 +31,8 @@ export default function StoreListController($state, storeService) {
   function getStores() {
     storeService.getStores().then(function(stores) {
       if (stores !== undefined) {
-        self.stores = stores;
+        self.stores.data = stores;
       }
     })
   }
-
-
-  console.log("store list controller initialized");
 }
