@@ -1,5 +1,6 @@
 import 'angular-material/angular-material.css';
 import 'material-design-icons/iconfont/material-icons.css';
+import './app.css';
 
 import angular from 'angular';
 import angularAnimate from 'angular-animate';
@@ -13,6 +14,8 @@ import storeModule from './store/store.module';
 import gameModule from './game/game.module';
 import serviceModule from './service/service.module';
 
+import DialogController from './dialog.controller';
+
 import app from './directive/app.directive';
 
 
@@ -22,6 +25,7 @@ angular.module(MODULE_NAME, [angularAnimate, angularAria, angularMaterial, angul
     mdDataTable, storeModule, gameModule, serviceModule
   ])
   .directive('app', app)
+  .controller('DialogController', DialogController)
   .constant('$apiUrl', API_URL);
 
 export default MODULE_NAME;

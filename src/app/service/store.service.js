@@ -22,12 +22,13 @@ export default function storeService($http, $apiUrl) {
   }
 
   function getStore(storeId) {
-    return $http.get($apiUrl + "store/" + storeId)
+    return $http.get($apiUrl + "getStore.php?storeId=" + storeId)
       .then(getStoreSuccess)
       .catch(getStoreFailed);
 
     function getStoreSuccess(response) {
-      return response.data;
+      // idk how to make the php not return it in an array, so we just extact the elemnt from the array
+      return response.data[0];
     }
 
     function getStoreFailed(response) {

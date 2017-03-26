@@ -8,7 +8,7 @@ export default function copyService($http, $apiUrl) {
   };
 
   function getCopiesFromStore(storeId) {
-    return $http.get($apiUrl + "copies/" + storeId)
+    return $http.get($apiUrl + "getCopiesFromStore.php?storeId=" + storeId)
       .then(getCopiesFromStoreComplete)
       .catch(getCopiesFromStoreFailed);
 
@@ -21,8 +21,13 @@ export default function copyService($http, $apiUrl) {
     }
   }
 
-  function purchase(copy) {
-    return $http.put($apiUrl + "copy/purchase" + copy.id)
+  function purchase(data) {
+    var config = {
+      headers: {
+        'Content-Type': undefined
+      }
+    };
+    return $http.post($apiUrl + "purchaseCopy.php", data, config)
       .then(purchaseComplete)
       .catch(purchaseFailed);
 

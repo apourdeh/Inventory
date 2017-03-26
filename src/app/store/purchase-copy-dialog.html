@@ -1,0 +1,22 @@
+<md-dialog flex-gt-xs="80" flex="100">
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <p>
+        Purchasing {{copy.name}}
+      </p>
+      <form layout="column">
+        <md-select data-md-container-class="selectdemoSelectHeader" ng-model="customerId">
+          <md-select-header class="demo-select-header">
+            <input class="demo-header-searchbox _md-text" ng-keydown="$event.stopPropagation()" ng-model="searchTerm" type="search" placeholder="Search for a person...">
+          </md-select-header>
+          <md-option ng-repeat="customer in customers | filter:searchTerm" value="{{ customer.mId }}">{{customer.name}} ({{customer.email}})
+          </md-option>
+        </md-select>
+      </form>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <span flex></span>
+    <md-button ng-click="accept()">Okay!</md-button>
+    <md-button ng-click="close()">Cancel</md-button>
+  </md-dialog-actions>
+</md-dialog>

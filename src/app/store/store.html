@@ -1,26 +1,25 @@
-<span>
-StoreId is {{StoreCtrl.storeId}}
-</span>
-
-<p>{{StoreCtrl.store.address}}</p>
-
+<md-card>
+  <p>StoreId: {{StoreCtrl.storeId}}</p>
+  <p>Address: {{StoreCtrl.store.address}}</p>
+  <p>Hours of Operation: {{StoreCtrl.store.hoursOfOperation}}</p>
+</md-card>
 <md-card>
   <md-table-container>
     <table md-table md-row-select multiple ng-model="selected" md-progress="StoreCtrl.promise">
       <thead md-head md-order="StoreCtrl.query.order">
         <tr md-row>
-          <th md-column md-order-by="id"><span>Id</span></th>
-          <th md-column md-order-by="gameName"><span>gameName</span></th>
+          <th md-column><span>Game Name</span></th>
           <th md-column>price</th>
           <th md-column>condition</th>
+          <th md-column>ESRB</th>
         </tr>
       </thead>
       <tbody md-body>
         <tr md-row ng-repeat="copy in StoreCtrl.copies.data">
-          <td md-cell>{{copy.id}}</td>
-          <td md-cell>{{copy.gameName}}</td>
+          <td md-cell>{{copy.name}}</td>
           <td md-cell>{{copy.price}}</td>
           <td md-cell>{{copy.condition}}</td>
+          <td md-cell>{{copy.ESRB}}</td>
           <td md-cell>
             <md-button class=" md-icon-button " ng-click="StoreCtrl.purchase(copy)">
               <md-icon>edit</md-icon>

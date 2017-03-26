@@ -1,23 +1,12 @@
-StoreController.$inject = ['$stateParams', 'storeService', 'copyService', '$mdDialog'];
+StoreController.$inject = ['$stateParams', 'storeService', 'copyService', 'personService', '$mdDialog', '$scope'];
 
-export default function StoreController($stateParams, storeService, copyService, $mdDialog) {
+export default function StoreController($stateParams, storeService, copyService, personService, $mdDialog, $scope) {
   var self = this;
   self.storeId = $stateParams.storeId;
-  self.store = {
-    address: 'test address'
-  };
+  self.store = {};
   self.copies = {};
-  self.copies.data = [{
-    id: 1,
-    gameName: "FIFA 2017",
-    price: '20.99',
-    condition: 'USED'
-  }, {
-    id: 2,
-    gameName: "Mario Kart",
-    price: '15.99',
-    condition: 'USED'
-  }];
+  self.copies.data = [];
+  self.customers = [];
   self.getCopiesFromStore = getCopiesFromStore;
   self.purchase = purchase;
 
@@ -26,12 +15,21 @@ export default function StoreController($stateParams, storeService, copyService,
   function init() {
     getStore();
     getCopiesFromStore();
+    getCustomers();
   }
 
   function getStore() {
     storeService.getStore(self.storeId).then(function(store) {
       if (store !== undefined) {
         self.store = store;
+      }
+    })
+  }
+
+  function getCustomers() {
+    personService.getCustomers().then(function(customers) {
+      if (customers !== undefined) {
+        self.customers = customers;
       }
     })
   }
@@ -45,8 +43,20 @@ export default function StoreController($stateParams, storeService, copyService,
   }
 
   function purchase(copy) {
-    copyService.purchase(copy).then(function() {
-      self.getCopiesFromStore();
-    })
+    $scope.customers = self.customers;
+    $scope.copy = copy;
+    $mdDialog.show({
+        controller: 'DialogController',
+        template: require('./purchase-copy-dialog.html'),
+        scope: $scope,
+        preserveScope: true,
+        clickOutsideToClose: true,
+      })
+      .then(function() {
+        var formData = new FormData();
+        formData.append('customerId', $scope.customerId);
+        formData.append('copyId', $scope.copy.id);
+        copyService.purchase(formData);
+      });
   }
 }
