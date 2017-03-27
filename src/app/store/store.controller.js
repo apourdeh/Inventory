@@ -9,6 +9,12 @@ export default function StoreController($stateParams, storeService, copyService,
   self.customers = [];
   self.getCopiesFromStore = getCopiesFromStore;
   self.purchase = purchase;
+  self.query = {
+    filter: '',
+    order: 'name',
+    limit: 50,
+    page: 1
+  };
 
   init();
 
@@ -38,6 +44,7 @@ export default function StoreController($stateParams, storeService, copyService,
     copyService.getCopiesFromStore(self.storeId).then(function(copies) {
       if (copies !== undefined) {
         self.copies.data = copies;
+        self.copies.count = copies.length;
       }
     })
   }

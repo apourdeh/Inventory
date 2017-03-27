@@ -12,6 +12,7 @@ import mdDataTable from 'angular-material-data-table';
 
 import storeModule from './store/store.module';
 import gameModule from './game/game.module';
+import customerModule from './customer/customer.module';
 import serviceModule from './service/service.module';
 
 import DialogController from './dialog.controller';
@@ -22,7 +23,7 @@ import app from './directive/app.directive';
 const MODULE_NAME = 'app';
 
 angular.module(MODULE_NAME, [angularAnimate, angularAria, angularMaterial, angularUiRouter, angularMessages,
-    mdDataTable, storeModule, gameModule, serviceModule
+    mdDataTable, storeModule, gameModule, customerModule, serviceModule
   ])
   .directive('app', app)
   .controller('DialogController', DialogController)
