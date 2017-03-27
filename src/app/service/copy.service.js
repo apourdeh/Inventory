@@ -7,10 +7,16 @@ export default function copyService($http, $apiUrl) {
     purchase: purchase
   };
 
-  function getCopiesFromStore(storeId) {
-    return $http.get($apiUrl + "getCopiesFromStore.php?storeId=" + storeId)
-      .then(getCopiesFromStoreComplete)
-      .catch(getCopiesFromStoreFailed);
+  function getCopiesFromStore(storeId, rating) {
+    if (rating === null) {
+      return $http.get($apiUrl + "getCopiesFromStore.php?storeId=" + storeId)
+        .then(getCopiesFromStoreComplete)
+        .catch(getCopiesFromStoreFailed);
+    } else {
+      return $http.get($apiUrl + "getCopiesFromStore.php?storeId=" + storeId + "&rating=" + rating)
+        .then(getCopiesFromStoreComplete)
+        .catch(getCopiesFromStoreFailed);
+    }
 
     function getCopiesFromStoreComplete(response) {
       return response.data;

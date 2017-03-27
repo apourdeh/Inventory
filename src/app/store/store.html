@@ -4,6 +4,17 @@
   <p>Hours of Operation: {{StoreCtrl.store.hoursOfOperation}}</p>
 </md-card>
 <md-card>
+  <md-input-container>
+    <label>Rating</label>
+    <md-select ng-model="StoreCtrl.rating" md-on-close="StoreCtrl.getCopiesFromStore()">
+      <md-option ng-value="null">None</md-option>
+      <md-option ng-value="'E'">E</md-option>
+      <md-option ng-value="'T'">T</md-option>
+      <md-option ng-value="'M'">M</md-option>
+    </md-select>
+  </md-input-container>
+</md-card>
+<md-card>
   <md-table-container>
     <table md-table md-row-select multiple ng-model="selected" md-progress="StoreCtrl.promise">
       <thead md-head md-order="StoreCtrl.query.order">

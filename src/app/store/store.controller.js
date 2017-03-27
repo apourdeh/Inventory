@@ -15,6 +15,7 @@ export default function StoreController($stateParams, storeService, copyService,
     limit: 50,
     page: 1
   };
+  self.rating = '';
 
   init();
 
@@ -41,7 +42,7 @@ export default function StoreController($stateParams, storeService, copyService,
   }
 
   function getCopiesFromStore() {
-    copyService.getCopiesFromStore(self.storeId).then(function(copies) {
+    copyService.getCopiesFromStore(self.storeId, self.rating).then(function(copies) {
       if (copies !== undefined) {
         self.copies.data = copies;
         self.copies.count = copies.length;
