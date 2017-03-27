@@ -14,7 +14,7 @@ if ($conn->connect_error) {
             FROM copy AS C
             JOIN game AS G on C.copyOf = G.gameId
             JOIN store AS S on C.location = S.storeNumber
-            WHERE S.storeNumber = 1050 AND NOT EXISTS (
+            WHERE S.storeNumber = $storeId AND NOT EXISTS (
               SELECT * FROM purchase AS P
               WHERE C.id = P.copyId
             )";
