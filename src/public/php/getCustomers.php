@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
 
-    $sql = "SELECT P.name, P.email, Cu.mId
+    $sql = "SELECT P.name, P.email, Cu.mId, Cu.age
             FROM customer AS Cu
             JOIN person AS P on P.PID = Cu.mId";
 

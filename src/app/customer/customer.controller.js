@@ -1,3 +1,6 @@
-export default function CustomerController() {
-  console.log("customer controller initialized");
+CustomerController.$inject = ['$stateParams']
+
+export default function CustomerController($stateParams) {
+  var self = this;
+  self.customerId = $stateParams.customerId;
 }

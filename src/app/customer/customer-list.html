@@ -1,2 +1,28 @@
-<span>Customer List Page</span>
-<!-- This should have a list of customers with a button to get to the customer detail page -->
+<md-card>
+  <md-table-container>
+    <table md-table md-row-select multiple ng-model="selected" md-progress="ListCtrl.promise">
+      <thead md-head md-order="ListCtrl.query.order">
+        <tr md-row>
+          <th md-column><span>Customer Id</span></th>
+          <th md-column>Name</th>
+          <th md-column>Email</th>
+          <th md-column>Age</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row ng-repeat="customer in ListCtrl.customers.data">
+          <td md-cell>{{customer.mId}}</td>
+          <td md-cell>{{customer.name}}</td>
+          <td md-cell>{{customer.email}}</td>
+          <td md-cell>{{customer.age}}</td>
+          <td md-cell>
+            <md-button class=" md-icon-button " ng-click="ListCtrl.viewCustomer(customer)">
+              <md-icon>edit</md-icon>
+            </md-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="ListCtrl.query.limit" md-limit-options="ListCtrl.limitOptions" md-page="ListCtrl.query.page" md-total="{{ListCtrl.customers.count}}" md-page-select></md-table-pagination>
+</md-card>
