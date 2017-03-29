@@ -3,7 +3,8 @@ gameService.$inject = ['$http', '$apiUrl'];
 export default function gameService($http, $apiUrl) {
 
   return {
-    getGames: getGames
+    getGames: getGames,
+	getGame: getGame
   };
 
   function getGames() {
@@ -19,4 +20,20 @@ export default function gameService($http, $apiUrl) {
       console.error("Failed to get games");
     }
   }
+	
+	function getGame(gameId) {
+    return $http.get($apiUrl + "getGame.php?gameId=" + gameId)
+      .then(getGameSuccess)
+      .catch(getGameFailed);
+
+    function getGameSuccess(response) {
+      return response.data;
+    }
+
+    function getGameFailed(response) {
+      console.error("Failed to get store")
+
+    }
+  }
+	
 }

@@ -5,7 +5,7 @@ export default function GameListController($state, gameService) {
 	var self = this;
 	self.games = {};
 	self.games.data = [];
-	self.gameDetail = gameDetail;
+	self.viewGame = viewGame;
 	
 	init();
 
@@ -22,7 +22,7 @@ export default function GameListController($state, gameService) {
 		})
 	}
 	
-	function gameDetail(game){
+	function viewGame(game){
 		$state.go('game', {
         gameId : game.gameId
     });
