@@ -3,7 +3,8 @@ personService.$inject = ['$http', '$apiUrl'];
 export default function personService($http, $apiUrl) {
 
   return {
-    getCustomers: getCustomers
+    getCustomers: getCustomers,
+    getCustomer: getCustomer
   };
 
   function getCustomers() {
@@ -17,6 +18,21 @@ export default function personService($http, $apiUrl) {
 
     function getCustomersFailed(response) {
       console.error("Failed to get customers");
+    }
+  }
+
+  function getCustomer(customerId) {
+    return $http.get($apiUrl + "GetCustomer.php?customerId=" + customerId)
+      .then(getCustomerComplete)
+      .catch(getCustomerFailed);
+
+    function getCustomerComplete(response) {
+      return response.data[0];
+    }
+
+    function getCustomerFailed(response) {
+      console.error("Failed to get customer " + customerId);
+
     }
   }
 }

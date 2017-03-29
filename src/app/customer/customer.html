@@ -1,2 +1,30 @@
-<span>Customer {{CustomerCtrl.customerId}}</span>
+<md-card>
+  <span>CustomerId: {{CustomerCtrl.customerId}}</span>
+  <span>Customer Name: {{CustomerCtrl.customer.name}}</span>
+  <span>Customer Email: {{CustomerCtrl.customer.email}}</span>
+</md-card>
 <!-- This should show a customer's information and purchase history -->
+
+<md-card>
+  <md-table-container>
+    <table md-table md-row-select multiple ng-model="selected" md-progress="CustomerCtrl.promise">
+      <thead md-head md-order="CustomerCtrl.query.order">
+        <tr md-row>
+          <th md-column>Date</th>
+          <th md-column>Copy Id</th>
+          <th md-column>Game Name</th>
+          <th md-column>Location</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row ng-repeat="purchase in CustomerCtrl.purchases.data">
+          <td md-cell>{{purchase.date}}</td>
+          <td md-cell>{{purchase.copyId}}</td>
+          <td md-cell>{{purchase.name}}</td>
+          <td md-cell>{{purchase.location}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="CustomerCtrl.query.limit" md-limit-options="CustomerCtrl.limitOptions" md-page="CustomerCtrl.query.page" md-total="{{CustomerCtrl.games.count}}" md-page-select></md-table-pagination>
+</md-card>
