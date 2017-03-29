@@ -23,6 +23,7 @@
           <th md-column>price</th>
           <th md-column>condition</th>
           <th md-column>ESRB</th>
+          <th md-column>Console</th>
         </tr>
       </thead>
       <tbody md-body>
@@ -31,6 +32,7 @@
           <td md-cell>{{copy.price}}</td>
           <td md-cell>{{copy.condition}}</td>
           <td md-cell>{{copy.ESRB}}</td>
+          <td md-cell>{{copy.playedOn}}</td>
           <td md-cell>
             <md-button class=" md-icon-button " ng-click="StoreCtrl.purchase(copy)">
               <md-icon>edit</md-icon>

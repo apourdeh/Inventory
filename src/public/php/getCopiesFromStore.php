@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     $rating = $_REQUEST["rating"];
 
     if ($rating == null) {
-      $sql = "SELECT C.id, G.name, C.price, C.condition, G.ESRB
+      $sql = "SELECT C.id, G.name, C.price, C.condition, G.ESRB, C.playedOn
               FROM copy AS C
               JOIN game AS G on C.copyOf = G.gameId
               JOIN store AS S on C.location = S.storeNumber
@@ -21,7 +21,7 @@ if ($conn->connect_error) {
                 WHERE C.id = P.copyId
               )";
     } else {
-    $sql = "SELECT C.id, G.name, C.price, C.condition, G.ESRB
+    $sql = "SELECT C.id, G.name, C.price, C.condition, G.ESRB, C.playedOn
             FROM copy AS C
             JOIN game AS G on C.copyOf = G.gameId
             JOIN store AS S on C.location = S.storeNumber
