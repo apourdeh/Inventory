@@ -1,4 +1,24 @@
 <md-card>
+  <md-input-container>
+    <label>Console Type</label>
+    <md-select ng-model="GameCtrl.console" md-on-close="GameCtrl.getInventory()">
+      <md-option ng-value="null">None</md-option>
+      <md-option ng-value="'3DS'">3DS</md-option>
+      <md-option ng-value="'PS1'">PS1</md-option>
+      <md-option ng-value="'PS2'">PS2</md-option>
+      <md-option ng-value="'PS3'">PS3</md-option>
+      <md-option ng-value="'PS4'">PS4</md-option>
+      <md-option ng-value="'PSP'">PSP</md-option>
+      <md-option ng-value="'SWITCH'">SWITCH</md-option>
+      <md-option ng-value="'WII'">WII</md-option>
+      <md-option ng-value="'WII-U'">WII-U</md-option>
+      <md-option ng-value="'XBOX'">XBOX</md-option>
+      <md-option ng-value="'XBOX360'">XBOX360</md-option>
+      <md-option ng-value="'XBOXONE'">XBOXONE</md-option>
+    </md-select>
+  </md-input-container>
+</md-card>
+<md-card>
   <md-table-container>
     <table md-table md-row-select multiple ng-model="selected" md-progress="GameCtrl.promise">
       <thead md-head md-order="GameCtrl.query.order">
@@ -19,11 +39,9 @@
           <td md-cell>{{game.address}}</td>
           <td md-cell>{{game.storeNumber}}</td>
           <td md-cell>{{game.inventory}}</td>
-          <td md-cell>
-            <md-button class=" md-icon-button " ng-click="StoreCtrl.purchase(game)">
+          <td md-cell><md-button class=" md-icon-button " ng-click="StoreCtrl.purchase(game)">
               <md-icon>edit</md-icon>
-            </md-button>
-          </td>
+            </md-button></td>
         </tr>
       </tbody>
     </table>

@@ -8,9 +8,12 @@ $game = array();
 if ( $conn->connect_error ) {
 	die( "Connection failed: " . $conn->connect_error );
 } else {
-	$gameId = $_REQUEST["gameId"];
-	
-	$sql = "SELECT G.name, G.description, C.playedOn, S.address, S.storeNumber, COUNT(*) AS inventory 
+	$gameId = $_REQUEST[ "gameId" ];
+	$console = $_REQUEST[ "console" ];
+
+	if ( $console == null ) {
+
+		$sql = "SELECT G.name, G.description, C.playedOn, S.address, S.storeNumber, COUNT(*) AS inventory 
 	  		FROM game AS G  
 			JOIN copy AS C ON G.gameId = C.copyOf 
 		    JOIN store AS S ON C.location = S.storeNumber 
@@ -21,6 +24,21 @@ if ( $conn->connect_error ) {
 			   WHERE C.id = P.copyID 
 			) 
 			GROUP BY S.storeNumber, C.playedOn";
+	} else {
+		$sql = "SELECT G.name, G.description, C.playedOn, S.address, S.storeNumber, COUNT(*) AS inventory 
+	  		FROM game AS G  
+			JOIN copy AS C ON G.gameId = C.copyOf 
+		    JOIN store AS S ON C.location = S.storeNumber 
+			WHERE G.gameId = $gameId 
+			AND NOT EXISTs 
+			( 		
+			   SELECT * FROM purchase AS P
+			   WHERE C.id = P.copyID 
+			) 
+			GROUP BY S.storeNumber, C.playedOn
+			HAVING C.playedOn = '$console'";
+
+	}
 
 
 	$result = $conn->query( $sql );

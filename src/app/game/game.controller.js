@@ -11,6 +11,8 @@ export default function GameController($stateParams, gameService) {
     limit: 50,
     page: 1
   	};
+	self.getInventory = getInventory;
+	self.console = '';
 	
 	
 	init();
@@ -20,7 +22,7 @@ export default function GameController($stateParams, gameService) {
 	}
 	
 	function getInventory(){
-		gameService.getGame(self.gameId).then(function(game){
+		gameService.getGame(self.gameId, self.console).then(function(game){
 			if(game!==undefined){
 				self.copies.data = game;
 			}
