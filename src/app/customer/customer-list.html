@@ -1,4 +1,13 @@
 <md-card>
+  <form layout="column" ng-submit="ListCtrl.search()">
+    <md-input-container>
+      <label>Name</label>
+      <input ng-model="ListCtrl.searchQuery" />
+    </md-input-container>
+    <md-button type="submit">Submit</md-button>
+  </form>
+</md-card>
+<md-card>
   <md-table-container>
     <table md-table md-row-select multiple ng-model="selected" md-progress="ListCtrl.promise">
       <thead md-head md-order="ListCtrl.query.order">

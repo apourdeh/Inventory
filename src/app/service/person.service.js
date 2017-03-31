@@ -4,7 +4,8 @@ export default function personService($http, $apiUrl) {
 
   return {
     getCustomers: getCustomers,
-    getCustomer: getCustomer
+    getCustomer: getCustomer,
+    getCustomersSearchName: getCustomersSearchName
   };
 
   function getCustomers() {
@@ -32,7 +33,20 @@ export default function personService($http, $apiUrl) {
 
     function getCustomerFailed(response) {
       console.error("Failed to get customer " + customerId);
+    }
+  }
 
+  function getCustomersSearchName(name) {
+    return $http.get($apiUrl + "GetCustomersSearchName.php?customerName=" + name)
+      .then(getCustomersSearchNameComplete)
+      .then(getCustomersSearchNameFailed);
+
+    function getCustomersSearchNameComplete(response) {
+      return response.data;
+    }
+
+    function getCustomersSearchNameFailed(response) {
+      console.error("Failed to get customer " + name);
     }
   }
 }

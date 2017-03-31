@@ -11,6 +11,8 @@ export default function CustomerListController($state, personService) {
     page: 1
   };
   self.viewCustomer = viewCustomer;
+  self.search = search;
+  self.searchQuery = '';
 
   init();
 
@@ -30,6 +32,15 @@ export default function CustomerListController($state, personService) {
   function viewCustomer(customer) {
     $state.go('customer', {
       customerId: customer.mId
+    });
+  }
+
+  function search() {
+    personService.getCustomersSearchName(self.searchQuery).then(function(customers) {
+      if (customers !== undefined) {
+        self.customers.data = customers;
+        self.customers.count = customers.length;
+      }
     });
   }
 }
