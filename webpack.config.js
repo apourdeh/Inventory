@@ -13,7 +13,14 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
  */
 var ENV = process.env.npm_lifecycle_event;
 var isTest = ENV === 'test' || ENV === 'test-watch';
-var isProd = ENV === 'build';
+var isProd = ENV === 'build' || ENV === 'prod';
+
+if (isProd) {
+  var envConfig = require('./config/prod');
+} else {
+  var envConfig = require('./config/dev');
+}
+
 
 module.exports = function makeWebpackConfig() {
   /**
@@ -220,9 +227,8 @@ module.exports = function makeWebpackConfig() {
 
   //TODO: change to use envConfig in the future.
   config.plugins.push(
-    new webpack.DefinePlugin({
-      API_URL: JSON.stringify('http://localhost:9090/')
-    }));
+    new webpack.DefinePlugin(envConfig)
+  );
 
   /**
    * Dev server configuration
