@@ -22,7 +22,7 @@ export default function personService($http, $apiUrl) {
   }
 
   function getCustomer(customerId) {
-    return $http.get($apiUrl + "GetCustomer.php?customerId=" + customerId)
+    return $http.get($apiUrl + "getCustomer.php?customerId=" + customerId)
       .then(getCustomerComplete)
       .catch(getCustomerFailed);
 
