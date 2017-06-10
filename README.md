@@ -1,4 +1,4 @@
-# CSE 412 project
+# Car Inventory
 
 This project uses the angular-webpack preboot project found [Here](https://github.com/preboot/angular-webpack).
 
