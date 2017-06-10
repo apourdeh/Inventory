@@ -1,4 +1,4 @@
-# Car Inventory
+# Data Base Project
 
 This project uses the angular-webpack preboot project found [Here](https://github.com/preboot/angular-webpack).
 
